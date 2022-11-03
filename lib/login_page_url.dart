@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_1/routes/ApiConstants.dart';
+import 'package:lottie/lottie.dart';
 // import 'package:navigation_project/routes/api_constancts.dart';
 
 class login_url extends StatefulWidget {
@@ -26,7 +27,8 @@ class _login_urlState extends State<login_url> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
+          Lottie.asset("assets/mobile_app_animation.json",width: 700,height: 300)
+          ,Padding(
             padding: const EdgeInsets.all(8),
             child: TextField(
               controller: _emailController,
@@ -146,7 +148,9 @@ class _login_urlState extends State<login_url> {
 
     final requestUrl = ApiConstant.baseurl + ApiConstant.endpoint;
     final requestPayload = {
-      "userid":"cgg@ghmc","password":"ghmc@cgg@2018"
+      "appName": "MJPHRMS",
+    // "mobileType": "IOS"
+    //Android
     };
 
     final dio_obj = Dio();
@@ -154,10 +158,36 @@ class _login_urlState extends State<login_url> {
       final response = await dio_obj.post(requestUrl,
           data: requestPayload
           );
-          print("response data ${response.data}");
+          print(response);
+         // print("response data ${response.data}");
       
     } on DioError catch (e) {
-      print("error in catch block $e");
+      
+      if(e.response?.statusCode==201){
+        final errormessage=e.response?.data["message"];
+        
+        showDialog(context: context, builder: (context){
+          return AlertDialog(
+            title: const Text("Error"),
+            content: Text(errormessage),
+            actions: [
+              TextButton(onPressed: () {
+              Navigator.pop(context);
+              
+            },
+            child: Text("Ok"),
+            )
+            ],
+
+          );
+         
+           
+
+        }
+        
+        );
+
+      }
       
       
     } 
