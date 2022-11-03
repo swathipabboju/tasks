@@ -1,6 +1,7 @@
 import 'dart:js';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_application_1/login_page_url.dart';
 import 'package:flutter_application_1/profile.dart';
 
 
@@ -14,6 +15,7 @@ class AllPages{
 
 
 AllRoutes.ProfilePage:((context) => ProfilePage()),
+AllRoutes.loginurl:((context) => login_url()),
 
 
   };
