@@ -10,6 +10,7 @@ import 'package:flutter_application_1/routes/ApiConstants.dart';
 import 'package:flutter_application_1/version_details_model.dart';
 import 'package:flutter_application_1/version_details_model.dart';
 import 'package:flutter_application_1/version_details_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'version_details_model.dart';
 
@@ -43,20 +44,24 @@ class _VersionCheckState extends State<VersionCheck> {
             const Padding(
               padding: EdgeInsets.only(right: 320),
             ),
-            passingDetails("status code", _versionModel?.statusCode.toString()),
-            passingDetails("status message", _versionModel?.statusMessage),
-            passingDetails("paginated", _versionModel?.paginated.toString()),
-            passingDetails("success", _versionModel?.success.toString()),
+            // passingDetails("status code", _versionModel?.statusCode.toString()),
+            /*  passingDetails(
+                "status message", _versionModel?.statusMessage ?? ""),
+            passingDetails(
+                "paginated", _versionModel?.paginated.toString() ?? ""),
+            passingDetails("success", _versionModel?.success.toString() ?? ""), */
             const Padding(
               padding: EdgeInsets.only(right: 320),
               child: Text("data  :{}"),
             ),
-            Padding(
+
+            /* Padding(
               padding: const EdgeInsets.only(left: 100),
               child: Column(
                 children: [
+                  
                   datadetails(
-                      "appname  :", _versionModel?.data?.appName?.toString()),
+                      "appname  :", _versionModel?.data?.appName),
                   datadetails("lastUpdatedData  :",
                       _versionModel?.data?.lastUpdatedDate?.toString()),
                   datadetails("maxTimeCheck  :",
@@ -65,10 +70,10 @@ class _VersionCheckState extends State<VersionCheck> {
                       _versionModel?.data?.versionNo?.toString()),
                 ],
               ),
-            )
+            ) */
           ],
         ));
-  }
+  } //build
 
   @override
   void initState() {
@@ -78,44 +83,50 @@ class _VersionCheckState extends State<VersionCheck> {
   }
 
   fetchDetails() async {
-    /* final requesturl =
-        "https://uat3.cgg.gov.in/cmnwebservicesmobile/attwsapi/" +
-            "versionCheck"; */
-    final requesturl = ApiConstant.baseurl + ApiConstant.endpoint;
+    final url = "https://uat3.cgg.gov.in/cmnwebservicesmobile/attwsapi/" +
+        "versionCheck";
+    final payload = {"appName": "MJPHRMS", "mobileType": "Android"};
 
-    final requestPayload = {"appName": "MJPHRMS", "mobileType": "Android"};
     final dio_obj = Dio();
 
-    final _response = await dio_obj.post(requesturl, data: requestPayload);
-    print(_response);
-    // convertion from json to model
-    setState(() {
-      _versionModel = VersionModel.fromJson(_response.data);
-    });
+    try {
+      final _response = await dio_obj.post(
+        url,
+      );
+      final versionmodel = VersionModel.fromJson(_response.data);
+      //print(_response.data);
+      setState(() {
+        _versionModel = versionmodel;
+      });
+
+      //print(versionmodel.statusMessage);
+
+    } on DioError catch (e) {
+      print(e.message);
+    }
   }
 }
+/* 
+    datadetails(tit, String? val) {
+      return Row(
+        children: [
+          Text(tit),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(val!),
+          )
+        ],
+      );
+    } */
 
-datadetails(tit, String? val) {
-  return Row(
-    children: [
-      Text(tit),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(val!),
-      )
-    ],
-  );
-}
-
-passingDetails(String title, String? value) {
+passingDetails(String s, String t) {
   return SizedBox(
     child: Padding(
       padding: const EdgeInsets.all(25.0),
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //children: [Text(title), Text(value!)],
-          children: [Text(title), Text(value!)],
+          children: [Text(s), Text(t!)],
         ),
       ),
     ),
