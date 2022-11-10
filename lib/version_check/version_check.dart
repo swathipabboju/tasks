@@ -7,9 +7,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_1/routes/ApiConstants.dart';
 
-import 'package:flutter_application_1/version_details_model.dart';
-import 'package:flutter_application_1/version_details_model.dart';
-import 'package:flutter_application_1/version_details_model.dart';
+import 'package:flutter_application_1/version_check/version_details_model.dart';
+import 'package:flutter_application_1/version_check/version_details_model.dart';
+import 'package:flutter_application_1/version_check/version_details_model.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'version_details_model.dart';

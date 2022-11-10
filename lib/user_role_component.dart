@@ -34,20 +34,7 @@ class userRoleComponent extends StatelessWidget {
                       ],
                     );
                   })),
-              /*  ValueListenableBuilder(
-                  valueListenable: user_role,
-                  builder: ((context, val, child) {
-                    return Row(
-                      children: [
-                        Checkbox(
-                            value: val,
-                            onChanged: ((value) {
-                              user_role.value = value!;
-                            })),
-                        Text("Bowler"),
-                      ],
-                    );
-                  })), */
+              
             ],
           )
         ],

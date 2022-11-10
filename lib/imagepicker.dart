@@ -29,8 +29,11 @@ class _ImagePickerState extends State<ImgPicker> {
       appBar: AppBar(title: Text("Image Picker")),
       body: Center(
           child: Column(
-        children: [SizedBox(height: 40),_image!=null? Image.file(_image!,width: 250,height: 250,fit: BoxFit.cover,):
-          Image.network(
+        children: [
+          SizedBox(height: 40),
+          _image!=null? 
+          Image.file(_image!,width: 250,height: 250,fit: BoxFit.cover,)
+          :Image.network(
             "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bGFwdG9wfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
             height: 100,
           ),

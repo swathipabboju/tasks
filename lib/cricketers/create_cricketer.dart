@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
+
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_application_1/cricketers/cricketer_model.dart';
 import 'package:flutter_application_1/cricketers/db.dart';
 import 'package:flutter_application_1/cricketers/user_image_component.dart';
 
 class CreateCricketer extends StatefulWidget {
   const CreateCricketer({super.key});
-
+  //final UserImageComponent userImagePath;
   @override
   State<CreateCricketer> createState() => _CreateCricketerState();
 }
 
 class _CreateCricketerState extends State<CreateCricketer> {
   TextEditingController _name = TextEditingController();
-  final Db _dbfile = Db.obj;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +34,20 @@ class _CreateCricketerState extends State<CreateCricketer> {
               ),
             ),
           ),
+          TextButton(
+              onPressed: () async {
+                final cricketerData = CrickertModel(
+                  name: _name.text,
+                );
+
+                final DatabaseHelper _databaseService = DatabaseHelper.instance;
+
+                final saved = await _databaseService.insertInto(
+                    cricketerData.toJson(), "Cricketers");
+                print("data saved $saved");
+                print("name is ${_name.text}");
+              },
+              child: Text("Submit"))
         ]),
       ),
     );
