@@ -5,10 +5,10 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DatabaseHelper {
-  static final _databaseName = "cricketers.db";
-  static final _databaseVersion = 1;
+  static const _databaseName = "cricketers.db";
+  static const _databaseVersion = 1;
 
-  static final table = 'cart';
+  static const table = 'Cricketers';
   // static final tableContact = 'contact';
 
   // make this a singleton class
@@ -20,9 +20,7 @@ class DatabaseHelper {
   static Database? _database;
   Future<Database> get database async => _database ??= await _initDatabase();
   Future<Database?> get database1 async {
-    if (_database == null) {
-      _database = await _initDatabase();
-    }
+    _database ??= await _initDatabase();
     return _database;
   }
 
@@ -44,7 +42,13 @@ class DatabaseHelper {
     await db.execute('''
           CREATE TABLE Cricketers
 (
-name varchar(255)
+name varchar(255),
+userId varchar(255),
+gender varchar(255),
+dob varchar(255),
+userimage varchar(255),
+country varchar(255)
+
 );
           ''');
 
@@ -75,7 +79,7 @@ name varchar(255)
 
   // All of the rows are returned as a list of maps, where each map is
   // a key-value list of columns.
-  Future<List<Map<String, dynamic>>> queryAllRows() async {
+  Future<List<Map<String, dynamic>>> queryAllRows(String s) async {
     Database db = await instance.database;
     return await db.query(table);
   }
@@ -87,10 +91,10 @@ name varchar(255)
 
   // All of the methods (insert, query, update, delete) can also be done using
   // raw SQL commands. This method uses a raw query to give the row count.
-  Future<int> queryRowCount() async {
+ /*  Future<int> queryRowCount() async {
     Database db = await instance.database;
     return Sqflite.firstIntValue(
             await db.rawQuery('SELECT COUNT(*) FROM $table')) ??
         0;
-  }
+  } */
 }

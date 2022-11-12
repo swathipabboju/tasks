@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/provider/task_with_provider.dart';
 
 import 'package:flutter_application_1/routes/appPages.dart';
+import 'package:provider/provider.dart';
 
 import 'cricketers/db.dart';
 import 'routes/allRoutes.dart';
@@ -17,9 +19,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final db = DatabaseHelper.instance.database;
-    return MaterialApp(
-      initialRoute: AllRoutes.initial,
-      routes: AllPages.routes,
-    );
+    return MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => TaskNotifier())],
+        child: MaterialApp(
+          initialRoute: AllRoutes.initial,
+          routes: AllPages.routes,
+        )
+        );
   }
 }
+// MaterialApp(
+    //   initialRoute: AllRoutes.initial,
+    //   routes: AllPages.routes,
+    // );

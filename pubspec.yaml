@@ -44,6 +44,11 @@ dependencies:
   path_provider: ^2.0.11
   custom_check_box: ^0.0.4
   sqflite: ^2.2.0+3
+  group_radio_button: ^1.2.0
+  intl: ^0.17.0
+  dropdown_button2: ^1.8.9
+  uuid: ^3.0.6
+  provider: ^6.0.4
   
 
   

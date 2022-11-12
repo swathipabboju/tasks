@@ -1,7 +1,7 @@
 // TODO Implement this library.
 class AllRoutes {
   AllRoutes._();
-  static const initial = multicheckbox;
+  static const initial = list_of_details;
   static const String ProfilePage = "/profilepage";
   static const String loginurl = "/loginurl";
   static const String versionCheck = "/versioncheck";
@@ -13,4 +13,7 @@ class AllRoutes {
   static const String teju = "/teju";
   static const String cricketer = "/cricketer";
   static const String multicheckbox = "/multicheckbox";
+  static const String userdata = "/userdata";
+  static const String details_screen = "/details_screen";
+static const String list_of_details = "/list_of_details";
 }

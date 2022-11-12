@@ -4,12 +4,16 @@ import 'package:flutter_application_1/checkbox_practice.dart';
 
 import 'package:flutter_application_1/cricketers/create_cricketer.dart';
 import 'package:flutter_application_1/cricketers/db.dart';
+import 'package:flutter_application_1/cricketers/user_data_component.dart';
 import 'package:flutter_application_1/imagepicker.dart';
 import 'package:flutter_application_1/login_page_url.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/multi_checkbox.dart';
 import 'package:flutter_application_1/notifier_list.dart';
 import 'package:flutter_application_1/profile.dart';
+import 'package:flutter_application_1/provider/details_screen.dart';
+import 'package:flutter_application_1/provider/listview_screen.dart';
+
 
 import 'package:flutter_application_1/user_role_component.dart';
 import 'package:flutter_application_1/version_check/version_check.dart';
@@ -38,9 +42,11 @@ AllRoutes.practicecheckbox:((context) => CheckboxPractice()),
 AllRoutes.cricketer:((context) => CreateCricketer()),
 AllRoutes.multicheckbox: ((context) => MultiCheckbox()),
 
+AllRoutes.userdata: ((context) => UserRetrieveComponent()),
+AllRoutes.details_screen: ((context) => DetailsScreen()),
+AllRoutes.list_of_details: ((context) => listviewScreen()),
 
   };
   
  }
-  
 }
