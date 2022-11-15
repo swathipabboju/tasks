@@ -6,7 +6,7 @@ import 'package:flutter_application_1/cricketers/cricketer_model.dart';
 import 'package:flutter_application_1/cricketers/db.dart';
 import 'package:flutter_application_1/cricketers/notifier.dart';
 import 'package:flutter_application_1/cricketers/user_country_component.dart';
-import 'package:flutter_application_1/cricketers/user_data_component.dart';
+import 'package:flutter_application_1/cricketers/retrieve.dart';
 import 'package:flutter_application_1/cricketers/user_dob_component.dart';
 import 'package:flutter_application_1/cricketers/user_gender_component.dart';
 import 'package:flutter_application_1/cricketers/user_image_component.dart';
@@ -46,24 +46,26 @@ class _CreateCricketerState extends State<CreateCricketer> {
           UserGenderComponent(),
           UserDobComponent(),
           DropDownComponent(),
-         
           TextButton(
               onPressed: () async {
                 final date = DateFormat("dd/MMM/yyyy").format(userDob.value);
                 final cricketerData = CrickertModel(
-                  name: _name.text,
-                  gender: userGender.value,
-                  dob: date,
-                  country: selectedCountry.value,
-                  userId: const Uuid().v1(),
-                  userimage: userImagePath.value?.path ?? "");
-                
+                    name: _name.text,
+                    gender: userGender.value,
+                    dob: date,
+                    country: selectedCountry.value,
+                    userId: const Uuid().v1(),
+                    userimage: userImagePath.value?.path ?? "");
 
                 final DatabaseHelper _databaseService = DatabaseHelper.instance;
 
                 final saved = await _databaseService.insertInto(
                     cricketerData.toJson(), "Cricketers");
                 print("data saved $saved");
+
+
+              
+
                 // print(userGender.value);
                 // print("name is ${_name.text}");
                 //  print(userDob.value);
@@ -73,16 +75,15 @@ class _CreateCricketerState extends State<CreateCricketer> {
                 // print("print country ${selectedCountry.value}");
               },
               child: Text("Submit")),
-              TextButton(
+          TextButton(
             onPressed: () async {
-            
-                  Navigator.pushNamed(context, AllRoutes.userdata);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //       builder: (context) => UserRetrieveComponent()),
-              // );
-            
+              print("submit buttton pressed");
+              Navigator.pushNamed(context, AllRoutes.userdata);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => UserRetrieveComponent()),
+              );
             },
             child: Text("View"),
           )

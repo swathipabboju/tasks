@@ -34,13 +34,14 @@ class CrickertModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
     data['userId'] = this.userId;
-   
     data['gender'] = this.gender;
     data['dob'] = this.dob;
     data['userimage'] = this.userimage;
     data['country'] = this.country;
     return data;
   }
+
+
 }
 
 

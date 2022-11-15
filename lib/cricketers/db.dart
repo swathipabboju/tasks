@@ -13,7 +13,7 @@ class DatabaseHelper {
 
   // make this a singleton class
   DatabaseHelper._privateConstructor();
-  
+
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
 
   // only have a single app-wide reference to the database
@@ -42,7 +42,7 @@ class DatabaseHelper {
     await db.execute('''
           CREATE TABLE Cricketers
 (
-name varchar(255),
+name varchar(255) PRIMARY KEY,
 userId varchar(255),
 gender varchar(255),
 dob varchar(255),
@@ -84,6 +84,33 @@ country varchar(255)
     return await db.query(table);
   }
 
+  Future<Future<int>> deleteRow(String s) async {
+    Database db = await instance.database;
+    return  db.rawDelete('DELETE FROM ${table} WHERE NAME=virat');
+  }
+
+  deleteDataByName(table, itemName) async {
+    var connection = await database;
+    return await connection.rawDelete("delete from $table where id=$itemName");
+  }
+  /* static Future<void> deleteById(
+    String table,
+    String columnId,
+    String id,
+  ) async {
+    final db = await DatabaseHelper;
+    await db.delete(
+      table,
+      where: "$columnId = ?",
+      whereArgs: [id],
+    );
+  } */
+
+  /* Future<String> DeleteRow(String name) async {
+    Database db = await instance.database;
+    return await db.delete(table);
+  } */
+
   // Future<List<Map<String, dynamic>>> queryAllRowsofContact() async {
   //   Database db = await instance.database;
   //   return await db.query(tableContact);
@@ -91,7 +118,7 @@ country varchar(255)
 
   // All of the methods (insert, query, update, delete) can also be done using
   // raw SQL commands. This method uses a raw query to give the row count.
- /*  Future<int> queryRowCount() async {
+  /*  Future<int> queryRowCount() async {
     Database db = await instance.database;
     return Sqflite.firstIntValue(
             await db.rawQuery('SELECT COUNT(*) FROM $table')) ??
