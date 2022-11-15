@@ -6,11 +6,12 @@ import 'package:flutter_application_1/cricket_folder/list_of_cricketers.dart';
 import 'package:flutter_application_1/cricketers/create_cricketer.dart';
 import 'package:flutter_application_1/cricketers/db.dart';
 import 'package:flutter_application_1/cricketers/retrieve.dart';
+import 'package:flutter_application_1/crud/mainScreen.dart';
 import 'package:flutter_application_1/imagepicker.dart';
 import 'package:flutter_application_1/login_page_url.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/multi_checkbox.dart';
-import 'package:flutter_application_1/Crud_example/main.dart';
+
 import 'package:flutter_application_1/notifier_list.dart';
 import 'package:flutter_application_1/profile.dart';
 import 'package:flutter_application_1/provider/details_screen.dart';
@@ -47,8 +48,9 @@ AllRoutes.multicheckbox: ((context) => MultiCheckbox()),
 AllRoutes.userdata: ((context) => UserRetrieveComponent()),
 AllRoutes.details_screen: ((context) => DetailsScreen()),
 AllRoutes.list_of_details: ((context) => listviewScreen()),
-AllRoutes.MyHomePage: ((context) => MyHomePage()),
+
 AllRoutes.list_of_cricketers: ((context) => ListOfCricketers()),
+AllRoutes.mainScreen: ((context) => mainScreen()),
   };
   
  }

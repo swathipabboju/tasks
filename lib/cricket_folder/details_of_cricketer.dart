@@ -55,12 +55,12 @@ class _DetailsOfCricketerState extends State<DetailsOfCricketer> {
                     model.country = selectedCountry.value;
                     model.dob = userDob.value.toString();
                     model.gender = userGender.value;
-                    print("model details ${model}");
+                   /*  print("model details ${model}");
                     print("model details ${model.country}");
                     print("model details ${model.dob}");
                     print("model details ${model.gender}");
                     print("model details ${model.name}");
-                    print("model details ${model.id}");
+                    print("model details ${model.id}"); */
                     print(model.cricketerMap());
                     var result =
                         await _service.saveCricketDetails(model.cricketerMap());

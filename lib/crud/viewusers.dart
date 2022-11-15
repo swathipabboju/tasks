@@ -1,6 +1,7 @@
-// import 'package:crud_sqlite_joes/model/User.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Crud_example/user_model.dart';
+
+import 'user.dart';
 
 class ViewUser extends StatefulWidget {
   final User user;

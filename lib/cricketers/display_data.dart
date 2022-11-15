@@ -1,9 +1,6 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/cricketers/cricketer_model.dart';
-
+import 'package:flutter_application_1/cricketers/db.dart';
 
 class CricketerListItem extends StatelessWidget {
   const CricketerListItem({super.key, required this.details});
@@ -15,7 +12,6 @@ class CricketerListItem extends StatelessWidget {
       color: Colors.grey,
       child: Column(
         children: [
-          
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text("Name:  ${details?.name ?? ""}"),
@@ -24,38 +20,40 @@ class CricketerListItem extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text("DOB:  ${details?.dob ?? ""}"),
           ),
-          
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("gender:  ${details?.gender ?? ""}",style: TextStyle(color: Colors.black),),
+            child: Text(
+              "gender:  ${details?.gender ?? ""}",
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text("country:  ${details?.country ?? ""}"),
           ),
-         
-         Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    onPressed: (){
-
-                      
-                  }, 
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                  onPressed: () {},
                   icon: const Icon(
-                    Icons.edit, 
-                  color: Colors.blue,)
-                  ),
-                  IconButton(
-                    onPressed: (){
-                      
-
-                  }, icon: const Icon(
-                    Icons.delete, 
-                  color: Colors.red,))
-
-                ],
-              ),
+                    Icons.edit,
+                    color: Colors.blue,
+                  )),
+              IconButton(
+                  onPressed: () async {
+                    final DeletedDetails = details?.name;
+                    final DatabaseHelper _databaseService =
+                        DatabaseHelper.instance;
+                    final saved =
+                        await _databaseService.deleteDataByName(DeletedDetails.toString());
+                  },
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ))
+            ],
+          ),
         ],
       ),
     );

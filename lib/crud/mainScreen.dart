@@ -1,21 +1,16 @@
-// import 'package:crud_sqlite_joes/model/User.dart';
-// import 'package:crud_sqlite_joes/screens/EditUser.dart';
-// import 'package:crud_sqlite_joes/screens/addUser.dart';
-// import 'package:crud_sqlite_joes/screens/viewUser.dart';
-// import 'package:crud_sqlite_joes/services/userService.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Crud_example/addUser.dart';
-import 'package:flutter_application_1/Crud_example/editUser.dart';
-import 'package:flutter_application_1/Crud_example/user_model.dart';
-import 'package:flutter_application_1/Crud_example/userService.dart';
-import 'package:flutter_application_1/Crud_example/viewUser.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'adduser.dart';
+import 'edituser.dart';
+import 'user.dart';
+import 'userservice.dart';
+import 'viewusers.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+
+
+class mainScreen extends StatelessWidget {
+  const mainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

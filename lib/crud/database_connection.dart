@@ -6,9 +6,8 @@ class DatabaseConnection {
   Future<Database> setDatabase() async {
     var directory = await getApplicationDocumentsDirectory();
     var path = join(directory.path, 'db_crud.db');
-    print(path);
     var database =
-        await openDatabase(path, version: 5, onCreate: _createDatabase);
+        await openDatabase(path, version: 1, onCreate: _createDatabase);
     return database;
   }
 

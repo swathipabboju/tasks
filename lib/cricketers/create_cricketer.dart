@@ -63,8 +63,7 @@ class _CreateCricketerState extends State<CreateCricketer> {
                     cricketerData.toJson(), "Cricketers");
                 print("data saved $saved");
 
-
-              
+               
 
                 // print(userGender.value);
                 // print("name is ${_name.text}");
@@ -86,7 +85,29 @@ class _CreateCricketerState extends State<CreateCricketer> {
               );
             },
             child: Text("View"),
-          )
+
+          ),
+           /* TextButton(
+            onPressed: () async {
+              print("delete buttton pressed");
+
+
+             final DatabaseHelper _databaseService = DatabaseHelper.instance;
+
+              final saved = await _databaseService.deleteDataByName(
+                  );
+              print("data saved $saved");
+
+
+              /* Navigator.pushNamed(context, AllRoutes.userdata);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => UserRetrieveComponent()),
+              ); */
+            },
+            child: Text("delete"),
+          ) */
         ]),
       ),
     );

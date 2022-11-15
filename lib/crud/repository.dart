@@ -1,6 +1,7 @@
-// import 'package:crud_sqflite_demo/db_helper/database_connection.dart';
-import 'package:flutter_application_1/Crud_example/database_connection.dart';
+
 import 'package:sqflite/sqflite.dart';
+
+import 'database_connection.dart';
 
 	class Repository {
 		late DatabaseConnection _databaseConnection;
@@ -18,7 +19,6 @@ import 'package:sqflite/sqflite.dart';
 		}
 		insertData(table, data) async {
 			var connection = await database;
-      
 			return await connection?.insert(table, data);
 		}
 		readData(table) async {

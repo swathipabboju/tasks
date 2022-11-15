@@ -16,6 +16,8 @@ class AllRoutes {
   static const String userdata = "/userdata";
   static const String details_screen = "/details_screen";
 static const String list_of_details = "/list_of_details";
-static const String MyHomePage = "/MyHomePage";
-static const String list_of_cricketers = "/MyHomePage";
+
+static const String list_of_cricketers = "/list_of_cricketers";
+static const String mainScreen = "/mainScreen";
+
 }

@@ -7,12 +7,13 @@ class CrickertModel1 {
   String? gender;
   String? country;
   cricketerMap() {
-    var mapping = <String, dynamic>{};
+    var mapping = Map<String, dynamic>();
+    
     mapping['id'] = id;
-    mapping['name'] = name!;
-    mapping['dob'] = dob!;
-    mapping['gender'] = gender!;
-    mapping['country'] = country!;
+    mapping['name'] = name;
+    mapping['dob'] = dob;
+    mapping['gender'] = gender;
+    mapping['country'] = country;
     return mapping;
   }
 }

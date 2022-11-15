@@ -9,6 +9,8 @@ class DatabaseHelper {
   static const _databaseVersion = 1;
 
   static const table = 'Cricketers';
+
+  static const ColumnID = 'name';
   // static final tableContact = 'contact';
 
   // make this a singleton class
@@ -84,15 +86,13 @@ country varchar(255)
     return await db.query(table);
   }
 
-  Future<Future<int>> deleteRow(String s) async {
-    Database db = await instance.database;
-    return  db.rawDelete('DELETE FROM ${table} WHERE NAME=virat');
+
+
+  Future<int> deleteDataByName(String itemName) async {
+    var connection = await instance.database;
+    return await connection.delete(table, where: '$ColumnID = ?', whereArgs: [itemName]);
   }
 
-  deleteDataByName(table, itemName) async {
-    var connection = await database;
-    return await connection.rawDelete("delete from $table where id=$itemName");
-  }
   /* static Future<void> deleteById(
     String table,
     String columnId,
@@ -104,6 +104,12 @@ country varchar(255)
       where: "$columnId = ?",
       whereArgs: [id],
     );
+  } */
+
+
+    /* Future<Future<int>> deleteRow(String s) async {
+    Database db = await instance.database;
+    return  db.rawDelete('DELETE FROM ${table} WHERE NAME=virat');
   } */
 
   /* Future<String> DeleteRow(String name) async {
